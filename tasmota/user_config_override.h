@@ -95,6 +95,7 @@ Examples :
 
 // -- Setup your own Wifi settings  ---------------
 //
+// come on, sync this file to my laptop!!!
 #undef  STA_SSID1
 #define STA_SSID1         "PLUSNET-G3MF"             // [Ssid1] Wifi SSID
 
