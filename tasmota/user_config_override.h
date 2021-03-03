@@ -1,7 +1,7 @@
 /*
-  user_config_override.h - user configuration overrides user_config.h for Sonoff-Tasmota
+  user_config_override.h - user configuration overrides my_user_config.h for Tasmota
 
-  Copyright (C) 2018  Theo Arends
+  Copyright (C) 2021  Theo Arends
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,20 +20,15 @@
 #ifndef _USER_CONFIG_OVERRIDE_H_
 #define _USER_CONFIG_OVERRIDE_H_
 
-// force the compiler to show a warning to confirm that this file is inlcuded
+// force the compiler to show a warning to confirm that this file is included
 #warning **** user_config_override.h: Using Settings from this File ****
 
 /*****************************************************************************************************\
  * USAGE:
- *   To modify the stock configuration without changing the user_config.h file:
+ *   To modify the stock configuration without changing the my_user_config.h file:
  *   (1) copy this file to "user_config_override.h" (It will be ignored by Git)
  *   (2) define your own settings below
- *   (3) for platformio:
- *         define USE_CONFIG_OVERRIDE as a build flags.
- *         ie1 : export PLATFORMIO_BUILD_FLAGS='-DUSE_CONFIG_OVERRIDE'
- *         ie2 : enable in file platformio.ini "build_flags = -Wl,-Tesp8266.flash.1m0.ld -DUSE_CONFIG_OVERRIDE"
- *       for Arduino IDE:
- *         enable define USE_CONFIG_OVERRIDE in user_config.h
+ *
  ******************************************************************************************************
  * ATTENTION:
  *   - Changes to SECTION1 PARAMETER defines will only override flash settings if you change define CFG_HOLDER.
@@ -74,52 +69,21 @@ Examples :
 
 #ifdef MY_IP
 #undef  WIFI_IP_ADDRESS
-#define WIFI_IP_ADDRESS   MY_IP                  // Set to 0.0.0.0 for using DHCP or IP address
+#define WIFI_IP_ADDRESS     MY_IP                // Set to 0.0.0.0 for using DHCP or enter a static IP address
 #endif
 
 #ifdef MY_GW
 #undef  WIFI_GATEWAY
-#define WIFI_GATEWAY      MY_GW                  // if not using DHCP set Gateway IP address
+#define WIFI_GATEWAY        MY_GW                // if not using DHCP set Gateway IP address
 #endif
 
 #ifdef MY_DNS
 #undef  WIFI_DNS
-#define WIFI_DNS          MY_DNS                 // If not using DHCP set DNS IP address (might be equal to WIFI_GATEWAY)
+#define WIFI_DNS            MY_DNS               // If not using DHCP set DNS IP address (might be equal to WIFI_GATEWAY)
 #endif
 
 */
 
-#undef  CFG_HOLDER
-#define CFG_HOLDER        4600                   // [Reset 1] Change this value to load SECTION1 configuration parameters to flash
-
-
-// -- Setup your own Wifi settings  ---------------
-//
-// come on, sync this file to my laptop!!!
-#undef  STA_SSID1
-#define STA_SSID1         "PLUSNET-G3MF"             // [Ssid1] Wifi SSID
-
-#undef  STA_PASS1
-#define STA_PASS1         "zenith(99)"     // [Password1] Wifi password
-
-#undef  STA_SSID2
-#define STA_SSID2         "PLUSNET-G3MF_EXT"             // [Ssid2] Wifi SSID
-
-#undef  STA_PASS2
-#define STA_PASS2         "zenith(99)"     // [Password1] Wifi password
-
-// -- Setup your own MQTT settings  ---------------
-#undef  MQTT_HOST
-#define MQTT_HOST         "192.168.1.80" // [MqttHost]
-
-#undef  MQTT_PORT
-#define MQTT_PORT         1883                   // [MqttPort] MQTT port (10123 on CloudMQTT)
-
-#undef  MQTT_USER
-#define MQTT_USER         "tony"         // [MqttUser] Optional user
-
-#undef  MQTT_PASS
-#define MQTT_PASS         "zenith(99)"         // [MqttPassword] Optional password
 
 
 
